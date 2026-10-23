@@ -3,3 +3,6 @@ dist/
 .env
 *.log
 .DS_Store
+_*.js
+_*.log
+_be_tmp*
