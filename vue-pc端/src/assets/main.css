@@ -1,0 +1,923 @@
+@import './base.css';
+
+/* ============================================================
+ * 全局补丁样式
+ * 说明：原脚手架残留的 #app 限宽 / 居中 / 双列网格样式会破坏
+ *       后台全屏布局，此处已彻底移除，改为全屏铺满。
+ * ============================================================ */
+#app {
+  width: 100%;
+  min-height: 100vh;
+  font-weight: normal;
+}
+
+/* ---------- 通用页面标题区 ---------- */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+
+.page-subtitle {
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- 通用卡片 ---------- */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------- 通用按钮 ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(79, 70, 229, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+  box-shadow: var(--shadow-brand);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: #fff;
+  color: var(--color-text-regular);
+  border-color: var(--color-border);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  color: var(--color-primary);
+  border-color: var(--brand-300);
+  background: var(--brand-50);
+}
+
+.btn-danger {
+  background: #fff;
+  color: var(--color-danger);
+  border-color: #fecaca;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #fef2f2;
+  border-color: var(--color-danger);
+}
+
+.btn-sm {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- 通用输入框 ---------- */
+.input,
+.select,
+.textarea {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  color: var(--color-text);
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.textarea {
+  height: auto;
+  min-height: 88px;
+  padding: 10px 12px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--color-text-placeholder);
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8.5 1.5 4h9z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+/* ---------- 通用表格 ---------- */
+.table-wrap {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.data-table th {
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 13px 14px;
+  color: var(--color-text-regular);
+  border-bottom: 1px solid var(--color-border-light);
+  vertical-align: middle;
+}
+
+.data-table tbody tr {
+  transition: background var(--transition-fast);
+}
+
+.data-table tbody tr:hover {
+  background: var(--gray-25);
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ---------- 标签 ---------- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tag-success {
+  color: var(--brand-700);
+  background: var(--brand-50);
+}
+
+.tag-warning {
+  color: #b45309;
+  background: #fffbeb;
+}
+
+.tag-danger {
+  color: #b91c1c;
+  background: #fef2f2;
+}
+
+.tag-info {
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.tag-gray {
+  color: var(--gray-600);
+  background: var(--gray-100);
+}
+
+.tag-purple {
+  color: #6d28d9;
+  background: #f5f3ff;
+}
+
+/* ---------- 空状态 ---------- */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: 56px 20px;
+  color: var(--color-text-secondary);
+}
+
+.empty-state .empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-300);
+}
+
+.empty-state .empty-icon svg {
+  width: 40px;
+  height: 40px;
+}
+
+.empty-state .empty-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.empty-state .empty-desc {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+/* 淡入动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.3s ease both;
+}
+
+/* ============================================================
+ * Toast / Confirm 全局样式（配合 AppNotice.vue 使用）
+ * ============================================================ */
+.notice-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.notice-toast {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 460px;
+  padding: 12px 18px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  font-size: 14px;
+  font-weight: 500;
+  pointer-events: auto;
+}
+
+.notice-toast.is-leave {
+  opacity: 0;
+  transform: translate(-50%, -12px);
+  transition: all 0.2s ease;
+}
+
+.notice-mask {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(2px);
+  pointer-events: auto;
+}
+
+.notice-dialog {
+  width: 100%;
+  max-width: 400px;
+  padding: 24px;
+  background: #fff;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  animation: fadeInUp 0.22s ease both;
+}
+
+.notice-dialog h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.notice-dialog p {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.notice-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+/* ============================================================
+ * 统一「面板 / 区块」容器
+ * 说明：此前 .panel / .panel-head / .panel-title 等被 6 个页面各复制一份，
+ *       细节已经开始漂移（有的有 hover 阴影、有的 head 带分割线、margin 不一）。
+ *       现在统一收敛到此处作为唯一来源；页面只保留「确实需要差异化」的覆盖。
+ * ============================================================ */
+.panel {
+  padding: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base);
+}
+
+.panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.panel-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.panel-sub {
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--color-text-placeholder);
+}
+
+.panel-badge {
+  flex: none;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: var(--brand-50);
+  color: var(--brand-700);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ============================================================
+ * 统一「弹窗 / 模态框」
+ * 说明：此前 4 个页面各自完整复制了一套 modal 样式，完全一致。
+ *       现统一到此处，页面不再重复定义。
+ * ============================================================ */
+.modal-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.modal-box {
+  display: flex;
+  flex-direction: column;
+  width: 440px;
+  max-width: 100%;
+  max-height: 88vh;
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  animation: modal-up 0.25s ease both;
+}
+
+.modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.modal-head h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.modal-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: 20px 24px;
+}
+
+.modal-foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 24px 20px;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  transition: all var(--transition-fast);
+}
+
+.modal-close:hover {
+  background: var(--gray-100);
+  color: var(--color-text);
+}
+
+@keyframes modal-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================================
+ * 统一「统计卡片 stat-*」
+ * 说明：此前 DataDashboard / MedalSystem / FamilyManage 各复制一份，
+ *       字号（30/28）、图标（34/32）、间距（20/18）互有出入。现统一为一套。
+ * ============================================================ */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.stat-card {
+  position: relative;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent);
+}
+
+.stat-head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 14px;
+}
+
+.stat-icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.stat-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.stat-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.stat-value {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.stat-num {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.stat-unit {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.stat-foot {
+  position: relative;
+  z-index: 1;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--color-border-light);
+  font-size: 12px;
+  color: var(--color-text-placeholder);
+}
+
+/* 统计卡配色变体（按语义着色，避免各页自造色） */
+.stat-card.is-primary .stat-icon {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+.stat-card.is-primary:hover {
+  border-color: var(--primary);
+}
+
+.stat-card.is-success .stat-icon {
+  background: var(--success-soft);
+  color: var(--success);
+}
+.stat-card.is-success:hover {
+  border-color: var(--success);
+}
+
+.stat-card.is-warning .stat-icon {
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+.stat-card.is-warning:hover {
+  border-color: var(--warning);
+}
+
+.stat-card.is-danger .stat-icon {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+.stat-card.is-danger:hover {
+  border-color: var(--danger);
+}
+
+/* ============================================================
+ * 统一「加载骨架屏」
+ * 说明：此前 DataDashboard / MedalSystem / TaskTemplate 各有自己的骨架微光实现，
+ *       色值（#f1f5f9 / #eef2f7 / #e8edf3）各不相同。现统一为一套。
+ * ============================================================ */
+.skeleton,
+.sk-line,
+.sk-circle,
+.chart-skeleton {
+  border-radius: var(--radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--gray-100) 25%,
+    var(--gray-200) 37%,
+    var(--gray-100) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeleton 1.4s ease infinite;
+}
+
+.sk-circle {
+  border-radius: 50%;
+}
+
+@keyframes skeleton {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/* ============================================================
+ * 统一「工具栏 / 筛选栏 / 搜索框」
+ * ============================================================ */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+/* 搜索框：自带边框的胶囊容器，内部 input 去边框。
+ * 兼容裸 <input>、.input、.search-input 三种写法（此前只认 .input，实际从未命中）。 */
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 240px;
+  max-width: 100%;
+  height: 38px;
+  padding: 0 12px 0 34px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.search-box:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.search-box input,
+.search-box .input,
+.search-box .search-input {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--color-text);
+}
+
+.search-box input::placeholder,
+.search-box .input::placeholder,
+.search-box .search-input::placeholder {
+  color: var(--color-text-placeholder);
+}
+
+.search-box .search-icon {
+  position: absolute;
+  left: 11px;
+  display: flex;
+  color: var(--color-text-placeholder);
+  pointer-events: none;
+}
+
+.search-box .search-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ============================================================
+ * 通用图标容器
+ * ============================================================ */
+.icon-svg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.icon-svg svg {
+  width: 1em;
+  height: 1em;
+}
+
+/* ============================================================
+ * 统一「表单」
+ * 说明：此前 .form-item label 被 7 个视图各复制一份，.required 被 5 个视图复制，
+ *       内容完全一致。现统一到全局，表单间距由各自容器的 flex gap 提供。
+ * ============================================================ */
+.form-item {
+  min-width: 0;
+}
+
+.form-item label,
+.form-item .label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-regular);
+}
+
+.required {
+  margin-left: 2px;
+  color: var(--color-danger);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* 表单错误提示（登录 / 注册 / 编辑资料共用） */
+.error-tip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-md);
+  background: var(--danger-soft);
+  color: #dc2626;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.error-icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #dc2626;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ============================================================
+ * 统一「模板卡片 tpl-card」
+ * 说明：BatchTask（选择器）与 TaskTemplate（列表）此前各写一套，
+ *       内边距 15/18、圆角 md/lg、边框 1.5/1 均不一致。现统一为基座，
+ *       选中态 .selected 由 BatchTask 自行覆盖。
+ * ============================================================ */
+.tpl-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.tpl-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--brand-200);
+}
+
+.tpl-desc {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ============================================================
+ * 统一「迷你头像 / 文字链接按钮」
+ * 说明：FamilyManage 的 .avatar-mini 少了渐变背景、.link-btn 少了主色，
+ *       导致这两处渲染成透明底、继承色。现统一补齐。
+ * ============================================================ */
+.avatar-mini {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand-300), var(--brand-600));
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  flex: none;
+  overflow: hidden;
+}
+
+.link-btn {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-primary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.link-btn:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+.link-btn:disabled {
+  color: var(--color-text-placeholder);
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+.link-btn.is-danger {
+  color: var(--color-danger);
+}
+
+.link-btn.is-danger:hover {
+  color: #dc2626;
+}
+
+/* ============================================================
+ * 统一「弹窗过渡动画」
+ * 说明：此前 4 个视图各自定义 modal-leave-*，写法一致且与全局 .modal-* 配套。
+ * ============================================================ */
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity var(--transition-base);
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-active .modal-box,
+.modal-leave-active .modal-box {
+  transition: transform var(--transition-base);
+}
+
+.modal-enter-from .modal-box,
+.modal-leave-to .modal-box {
+  transform: translateY(12px) scale(0.98);
+}
